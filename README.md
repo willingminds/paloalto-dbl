@@ -14,3 +14,10 @@ https://ip-ranges.amazonaws.com/ip-ranges.json | jq -r '.prefixes[] | select(.se
 ```
 https://api.github.com/meta | jq -r '.api[]'
 ```
+
+- smtp.office365.com (Office365 SMTP addresses)
+
+```
+https://endpoints.office.com/endpoints/worldwide?clientrequestid=GUID | jq -r '.[] | select(.urls[]? | contains("smtp.office365.com")) | .ips[]'
+```
+GUID can be generated in various ways, such as via https://www.guidgenerator.com/ -- see http://aka.ms/ipurlws for more information
