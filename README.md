@@ -6,24 +6,29 @@ to bind EDL objects to a GitHub.com SSL profile to enable integration into the f
 - aws-route53-healthchecks (AWS Route53 health check source addresses)
 
 ```
-https://ip-ranges.amazonaws.com/ip-ranges.json | jq -r '.prefixes[] | select(.service=="ROUTE53_HEALTHCHECKS") | .ip_prefix'
+ SOURCE: https://ip-ranges.amazonaws.com/ip-ranges.json 
+EXTRACT: jq -r '.prefixes[] | select(.service=="ROUTE53_HEALTHCHECKS") | .ip_prefix'
 ```
 
 - github-api (GitHub API addresses)
 
 ```
-https://api.github.com/meta | jq -r '.api[]'
+ SOURCE: https://api.github.com/meta 
+EXTRACT: jq -r '.api[]'
 ```
-GUID for below calls can be generated in various ways, such as via https://www.guidgenerator.com/ -- see http://aka.ms/ipurlws for more information
+
+The GUID value for below calls can be generated in via https://www.guidgenerator.com/ -- see http://aka.ms/ipurlws for more information.
 
 - smtp.office365.com (Office365 SMTP addresses)
 
 ```
-https://endpoints.office.com/endpoints/worldwide?clientrequestid=GUID | jq -r '.[] | select(.urls[]? | contains("smtp.office365.com")) | .ips[]'
+ SOURCE: https://endpoints.office.com/endpoints/worldwide?clientrequestid=GUID 
+EXTRACT: jq -r '.[] | select(.urls[]? | contains("smtp.office365.com")) | .ips[]'
 ```
 
 - *.mail.protection.outlook.com (Office365 SMTP addresses)
 
 ```
-https://endpoints.office.com/endpoints/worldwide?clientrequestid=GUID | jq -r '.[] | select(.urls[]? | contains("*.mail.protection.outlook.com")) | .ips[]'
+ SOURCE: https://endpoints.office.com/endpoints/worldwide?clientrequestid=GUID
+EXTRACT: jq -r '.[] | select(.urls[]? | contains("*.mail.protection.outlook.com")) | .ips[]'
 ```
