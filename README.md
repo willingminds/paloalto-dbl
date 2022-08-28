@@ -17,7 +17,7 @@ EXTRACT: jq -r '.prefixes[] | select(.service=="ROUTE53_HEALTHCHECKS") | .ip_pre
 EXTRACT: jq -r '.api[]'
 ```
 
-- github-git (GitHub Web addresses)
+- github-git (GitHub Git addresses)
 
 ```
  SOURCE: https://api.github.com/meta 
