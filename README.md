@@ -17,6 +17,19 @@ EXTRACT: jq -r '.prefixes[] | select(.service=="ROUTE53_HEALTHCHECKS") | .ip_pre
 EXTRACT: jq -r '.api[]'
 ```
 
+- github-git (GitHub Web addresses)
+
+```
+ SOURCE: https://api.github.com/meta 
+EXTRACT: jq -r '.git[]'
+```
+- github-web (GitHub Web addresses)
+
+```
+ SOURCE: https://api.github.com/meta 
+EXTRACT: jq -r '.web[]'
+```
+
 The GUID value for below calls can be generated in via https://www.guidgenerator.com/ -- see http://aka.ms/ipurlws for more information.
 
 - smtp.office365.com (Office365 SMTP addresses)
