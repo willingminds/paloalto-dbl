@@ -10,6 +10,29 @@ to bind EDL objects to a GitHub.com SSL profile to enable integration into the f
 EXTRACT: jq -r '.prefixes[] | select(.service=="ROUTE53_HEALTHCHECKS") | .ip_prefix'
 ```
 
+- okta (Okta cell addresses)
+
+```
+ SOURCE: https://s3.amazonaws.com/okta-ip-ranges/ip_ranges.json
+  CELL:
+    apac_cell_1
+    apac_cell_2
+    emea_cell_1
+    emea_cell_2
+    us_cell_1
+    us_cell_10
+    us_cell_11
+    us_cell_12
+    us_cell_14
+    us_cell_2
+    us_cell_3
+    us_cell_4
+    us_cell_5
+    us_cell_6
+    us_cell_7
+EXTRACT: jq -r '.CELL.ip_ranges[]'
+```
+
 - github-api (GitHub API addresses)
 
 ```
