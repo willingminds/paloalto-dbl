@@ -68,3 +68,10 @@ EXTRACT: jq -r '.[] | select(.urls[]? | contains("smtp.office365.com")) | .ips[]
  SOURCE: https://endpoints.office.com/endpoints/worldwide?clientrequestid=GUID
 EXTRACT: jq -r '.[] | select(.urls[]? | contains("*.mail.protection.outlook.com")) | .ips[]'
 ```
+
+- gmail.com SPF (Google SMTP addresses)
+
+```
+ SOURCE: SPF (https://github.com/jschauma/spf/)
+EXTRACT: spf -r 1.1.1.1 -j gmail.com | jq -r '.expanded[].pass?.total? | select( . != null ) | .ip4[]'
+```
